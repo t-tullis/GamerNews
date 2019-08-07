@@ -1,1 +1,1 @@
-This is a readme for gamernews
+An app for all your gaming info
