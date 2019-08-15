@@ -6,7 +6,8 @@ function GameList(props){
     const [singleGame, setSingleGameData] = useState([])
     
     const retrieveSingleGame = (e) => {
-        let singleGame = e.target.textContent.replace(/ /g, '-')
+        let gameWithHyphen = e.target.textContent.replace(/:/g, '')
+        let singleGame = gameWithHyphen.replace(/ /g, '-')
         axios
         .get(`https://api.rawg.io/api/games/${singleGame}`)
         .then(res => setSingleGameData(res.data))
@@ -14,7 +15,7 @@ function GameList(props){
 
         e.preventDefault();
     }
-
+    
     return(
         <div>
         <GameView singleGameData={singleGame}/>

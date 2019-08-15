@@ -37,9 +37,10 @@ function SearchResults(){
 
 
       return(
-        <div>
+          <div>
+          {console.log(gameData)}
         <h1> Search Results component</h1>
-                <form onSubmit = {onSearchSubmit}>
+                <form onSubmit={onSearchSubmit}>
                     <input
                     type='text'
                     value={gameData.gameSearch}
