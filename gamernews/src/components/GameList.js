@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
-import GameView from './GameView.js'
-import axios from 'axios'
+import GameView from './GameView.js';
+import axios from 'axios';
+import Loader from 'react-loader-spinner';
 
 function GameList(props){
-    const [singleGame, setSingleGameData] = useState([])
+    const [singleGame, setSingleGameData] = useState({
+        data: [],
+        isToggleOn: false
+    })
     
     const retrieveSingleGame = (e) => {
-        let gameWithHyphen = e.target.textContent.replace(/:/g, '')
-        let singleGame = gameWithHyphen.replace(/ /g, '-')
-        axios
-        .get(`https://api.rawg.io/api/games/${singleGame}`)
-        .then(res => setSingleGameData(res.data))
-        .catch(error => error)
-
         e.preventDefault();
+        //Regex to replace : and whitespace
+        let gameWithHyphen = e.target.textContent.replace(/:/g, '')
+        let singleGameSearch = gameWithHyphen.replace(/ /g, '-')
+        //axios request to get data on clcik
+        axios
+        .get(`https://api.rawg.io/api/games/${singleGameSearch}`)
+        .then(res => setSingleGameData({
+            data: res.data, 
+            isToggleOn:  !singleGame.isToggleOn}))
+        .catch(error => error)
     }
+
     
     return(
         <div>
-        <GameView singleGameData={singleGame}/>
         <h1>This is game list</h1>
+        {singleGame.isToggleOn && 
+        <GameView 
+        singleGameData={singleGame.data}
+        toggleOn={singleGame.isToggleOn}
+        />}
         {props.gameData.map(game => {
             return(
                 <div key={game.id}>

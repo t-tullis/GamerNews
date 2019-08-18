@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react';
 
 function GameView(props){
     return(
         <>  
-        <h1>Game View</h1>
         {console.log(props.singleGameData)}
-        <h3>{props.singleGameData.name}</h3>
+        <h1>{props.singleGameData.name}</h1>
         {props.singleGameData.description_raw}
         </>
     )
