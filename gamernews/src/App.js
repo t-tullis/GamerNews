@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Gamer News</h1>
       <SearchResults/>
     </div>
   );

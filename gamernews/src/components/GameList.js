@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import GameView from './GameView.js';
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
 
 function GameList(props){
     const [singleGame, setSingleGameData] = useState({
@@ -25,8 +24,7 @@ function GameList(props){
 
     
     return(
-        <div>
-        <h1>This is game list</h1>
+        <div className='game-list'>
         {singleGame.isToggleOn && 
         <GameView 
         singleGameData={singleGame.data}
@@ -35,9 +33,14 @@ function GameList(props){
         {props.gameData.map(game => {
             return(
                 <div key={game.id}>
-                <h3 onClick={retrieveSingleGame}className='gameName'>{game.name}</h3>
-                <p>{game.released}</p>
+                {/* <video id="background-video" loop autoPlay>
+                    <source src={game.clip.preview} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video> */}
                 <img className='game-picture' src={game.background_image} />
+                <h4 onClick={retrieveSingleGame}className='gameName'>{game.name}</h4>
+                <p>{game.released}</p>
+                <p>Rating: {game.rating} / 5</p>
                 </div>
             )
         })}

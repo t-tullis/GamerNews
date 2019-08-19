@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import GameView from './GameView.js'
 import GameList from './GameList.js'
 import axios from 'axios'
 import '../App.css'
@@ -13,7 +12,7 @@ function SearchResults(){
 
       useEffect( () => {
           axios
-          .get(`https://api.rawg.io/api/games?page_size=10`)
+          .get(`https://api.rawg.io/api/games?page_size=25`)
           .then(res => setGameData({gameResults: res.data.results}))
           .catch(error => error)   
         }, [])
@@ -30,7 +29,7 @@ function SearchResults(){
 
       const retrieveSearchedGames = (gameSearch) => {
               axios
-              .get(`https://api.rawg.io/api/games?page_size=10&search=${gameSearch}`)
+              .get(`https://api.rawg.io/api/games?page_size=15&search=${gameSearch}`)
               .then(res => setGameData({gameResults: res.data.results}))
               .catch(error => error)
           }
@@ -38,8 +37,8 @@ function SearchResults(){
 
       return(
           <div>
-          {console.log(gameData)}
-        <h1> Search Results component</h1>
+              <div className='search-bar'>
+                {console.log(gameData)}
                 <form onSubmit={onSearchSubmit}>
                     <input
                     type='text'
@@ -51,6 +50,7 @@ function SearchResults(){
                         Submit
                     </button>
                 </form>
+            </div>
         <GameList gameData={gameData.gameResults} />
         </div>
     )
