@@ -37,8 +37,8 @@ function GameList(props){
                     <source src={game.clip.preview} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video> */}
-                <img className='game-picture' src={game.background_image} />
                 <h4 onClick={retrieveSingleGame}className='gameName'>{game.name}</h4>
+                <img className='game-picture' src={game.background_image} />
                 <p>{game.released}</p>
                 <p>Rating: {game.rating} / 5</p>
                 </div>

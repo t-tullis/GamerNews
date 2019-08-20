@@ -22,6 +22,10 @@
   width: 80%;
 }
 
+.game-view h4{
+  margin-bottom: 0;
+}
+
 .search-bar{
   margin: 30px 0
 }
