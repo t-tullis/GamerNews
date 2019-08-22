@@ -1,4 +1,5 @@
 import React from 'react';
+import GameList from './GameList.js'
 import '../App.css'
 
 function GameView(props){
@@ -12,10 +13,19 @@ function GameView(props){
         <div className='game-genres'>
             {props.singleGameData.genres.map(genre => {
                 return(
-                    <p>{genre.name}</p>
+                    <p key={genre.id}>{genre.name}</p>
                 )
             })}
             </div>
+        <h4>Platforms</h4>
+        <div className='platforms'>
+            {props.singleGameData.platforms.map(platform => {
+                return(
+                    <p key={platform.platform.id}>{platform.platform.name}</p>
+                )
+            })}
+
+        </div>
             <a href={props.singleGameData.website}>{props.singleGameData.website}</a>
         </div>
     )

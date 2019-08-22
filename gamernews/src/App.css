@@ -35,5 +35,9 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
+}
 
+.platforms{
+  display: flex;
+  justify-content: space-evenly;
 }
