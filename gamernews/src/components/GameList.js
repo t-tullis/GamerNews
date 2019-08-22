@@ -31,6 +31,9 @@ function GameList(props){
         toggleOn={singleGame.isToggleOn}
         />}
         {props.gameData.map(game => {
+            let date = new Date(game.released).toDateString()
+            let releaseDate = date.split(' ').slice(1).join('-')
+
             return(
                 <div key={game.id}>
                 {/* <video id="background-video" loop autoPlay>
@@ -39,8 +42,9 @@ function GameList(props){
                 </video> */}
                 <h4 onClick={retrieveSingleGame}className='gameName'>{game.name}</h4>
                 <img className='game-picture' src={game.background_image} />
-                <p>{game.released}</p>
-                <p>Rating: {game.rating} / 5</p>
+                <p><b>Release Date: </b>{releaseDate}</p>
+                {console.log(date)}
+                <p><b>Rating: </b> {game.rating} / 5</p>
                 </div>
             )
         })}
