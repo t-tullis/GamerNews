@@ -3,16 +3,18 @@ import GameList from './GameList.js'
 import '../App.css'
 
 function GameView(props){
-    const [closeGame, closeGameData] = useState({
-        isToggleOn: props.toggleOn
-    })
+//     const [closeGame, closeGameData] = useState({
+//         isToggleOn: props.toggleOn
+//     })
 
-    const toggleOff = () => {
-        closeGameData({
-            isToggleOn: !props.toggleOn
-    })
-    return null
-}
+//     const toggleOff = () => {
+//         closeGameData({
+//             isToggleOn: !closeGame.isToggleOn
+//     })
+//     return
+// }
+
+    
 
     return(
         <div className='game-view'>  
@@ -38,8 +40,6 @@ function GameView(props){
             })}
         </div>
             <a href={props.singleGameData.website}>{props.singleGameData.website}</a>
-            <button onClick={toggleOff}>Close</button>
-            {console.log(closeGame)}
         </div>
     )
 }
