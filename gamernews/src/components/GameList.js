@@ -35,7 +35,7 @@ function GameList(props){
             let releaseDate = date.split(' ').slice(1).join('-')
 
             return(
-                <div key={game.id}>
+                <div key={game.id} className='game-card'>
                 {/* <video id="background-video" loop autoPlay>
                     <source src={game.clip.preview} type="video/mp4" />
                     Your browser does not support the video tag.

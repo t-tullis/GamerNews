@@ -4,6 +4,8 @@
 
 .game-picture{
   width: 400px;
+  height: 250px;
+  border-radius: 5px;
 }
 
 .gameName:hover{
@@ -41,4 +43,11 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+}
+
+.game-card{
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
 }
