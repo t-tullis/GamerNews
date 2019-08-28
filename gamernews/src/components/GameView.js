@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import GameList from './GameList.js'
 import '../App.css'
 
@@ -14,15 +14,14 @@ function GameView(props){
 //     return
 // }
 
-    
 
     return(
         <div className='game-view'>  
         {console.log(props.singleGameData)}
         {console.log(props.toggleOn)}
         <h1>{props.singleGameData.name}</h1>
-        {props.singleGameData.description_raw}
         <p><b>Metacritic Rating:</b> {props.singleGameData.metacritic}</p>
+        {props.singleGameData.description_raw}
         <h4>Genres</h4>
         <div className='game-genres'>
             {props.singleGameData.genres.map(genre => {

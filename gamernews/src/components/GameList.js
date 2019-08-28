@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import GameView from './GameView.js';
 import axios from 'axios';
 
@@ -7,9 +7,19 @@ function GameList(props){
         data: [],
         isToggleOn: false
     })
+
+    let gameRef = useRef()
+
+    let scrollToGameDetails = () => {
+      window.scrollTo({ 
+        behavior: 'smooth', 
+        top: gameRef.current.offsetTop
+      })
+    }
     
     const retrieveSingleGame = (e) => {
         e.preventDefault();
+        scrollToGameDetails();
         //Regex to replace : and whitespace
         let gameWithHyphen = e.target.textContent.replace(/:/g, '')
         let singleGameSearch = gameWithHyphen.replace(/ /g, '-')
@@ -20,16 +30,21 @@ function GameList(props){
             data: res.data, 
             isToggleOn:  !singleGame.isToggleOn}))
         .catch(error => error)
+
     }
+
+
 
     
     return(
         <div className='game-list'>
-        {singleGame.isToggleOn && 
-        <GameView 
-        singleGameData={singleGame.data}
-        toggleOn={singleGame.isToggleOn}
-        />}
+        <div className='game-details' ref={gameRef}>
+            {singleGame.isToggleOn && 
+            <GameView 
+                singleGameData={singleGame.data}
+                 toggleOn={singleGame.isToggleOn}
+            />}
+        </div>
         {props.gameData.map(game => {
             let date = new Date(game.released).toDateString()
             let releaseDate = date.split(' ').slice(1).join('-')
